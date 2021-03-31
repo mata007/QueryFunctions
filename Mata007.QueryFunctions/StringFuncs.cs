@@ -13,19 +13,19 @@ namespace Mata007.QueryFunctions
         /// <summary>
         /// Zjistí jestli řetězec <paramref name="text"/> obsahuje řetězec <paramref name="toFind"/> 
         /// </summary>
-        public static bool ContainsAI(string text, string toFind) =>
+        public static bool ContainsAI(this string text, string toFind) =>
             throw ShouldBeTranslatedException;
 
         /// <summary>
         /// Zjistí jestli řetězec <paramref name="text"/> začíná řetězecem <paramref name="toFind"/> 
         /// </summary>
-        public static bool StartsWithAI(string text, string toFind) =>
+        public static bool StartsWithAI(this string text, string toFind) =>
             throw ShouldBeTranslatedException;
 
         /// <summary>
         /// Zjistí jestli řetězec <paramref name="text"/> končí řetězecem <paramref name="toFind"/> 
         /// </summary>
-        public static bool EndsWithAI(string text, string toFind) =>
+        public static bool EndsWithAI(this string text, string toFind) =>
             throw ShouldBeTranslatedException;
     }
 }
