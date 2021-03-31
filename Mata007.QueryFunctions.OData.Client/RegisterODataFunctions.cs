@@ -18,10 +18,9 @@ namespace Mata007.QueryFunctions.OData.Client
             expressionMethodMap = typeSystem.GetField("expressionMethodMap", BindingFlags.Static | BindingFlags.NonPublic)?.GetValue(null) as Dictionary<MethodInfo, string>;
         }
 
-        public static void RegisterCustomFunction(Type type, string functionName)
+        public static void RegisterCustomFunction(MethodInfo methodInfo, string functionName = null)
         {
-            var methodInfo = type.GetMethod(functionName);
-            expressionMethodMap.Add(methodInfo, functionName.ToLower());            
+            expressionMethodMap.Add(methodInfo, functionName ?? methodInfo.Name.ToLower());            
         }
     }
 }

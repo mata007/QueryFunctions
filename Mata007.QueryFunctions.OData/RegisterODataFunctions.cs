@@ -3,20 +3,20 @@ using Microsoft.OData.Edm;
 using Microsoft.OData.UriParser;
 using System;
 using System.Linq;
+using System.Reflection;
 
 namespace Mata007.QueryFunctions.OData
 {
     public class RegisterODataFunctions
     {
-        public static void RegisterCustomFunction(Type type, string functionName)
+        public static void RegisterCustomFunction(MethodInfo methodInfo, string functionName = null)
         {
-            var methodInfo = type.GetMethod(functionName)!;
             var returnType = TypeToReference(methodInfo.ReturnType);
             var args = methodInfo.GetParameters()
                 .Select(x => TypeToReference(x.ParameterType))
                 .ToArray();
             var signature = new FunctionSignatureWithReturnType(returnType, args);
-            ODataUriFunctions.AddCustomUriFunction(functionName.ToLower(), signature, methodInfo);
+            ODataUriFunctions.AddCustomUriFunction(functionName ?? methodInfo.Name.ToLower(), signature, methodInfo);
         }
 
         private static IEdmTypeReference TypeToReference(Type type)
