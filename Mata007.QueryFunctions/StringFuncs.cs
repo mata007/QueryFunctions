@@ -1,31 +1,32 @@
 ﻿using System;
+using System.Globalization;
 
 namespace Mata007.QueryFunctions
 {
     /// <summary>
-    /// Funkce použitelné LINQ dotazech
+    /// Functions applicable in LINQ queries to allow accent and case insensitive search in strings
     /// </summary>
     public static class StringFuncs
     {
-        private static Exception ShouldBeTranslatedException =>
-            new Exception("Should be translated to SQL");
+        private readonly static CompareInfo invariantCultureCompareInfo = CultureInfo.InvariantCulture.CompareInfo;
+        private const CompareOptions aiCompareOptions = CompareOptions.IgnoreCase | CompareOptions.IgnoreNonSpace;
 
         /// <summary>
-        /// Zjistí jestli řetězec <paramref name="text"/> obsahuje řetězec <paramref name="toFind"/> 
+        /// Determines whether the specified string in parameter <paramref name="text"/> contains the string <paramref name="toFind"/> 
         /// </summary>
         public static bool ContainsAI(this string text, string toFind) =>
-            throw ShouldBeTranslatedException;
+            invariantCultureCompareInfo.IndexOf(text, toFind, aiCompareOptions) >= 0;
 
         /// <summary>
-        /// Zjistí jestli řetězec <paramref name="text"/> začíná řetězecem <paramref name="toFind"/> 
+        /// Determines whether the specified string in parameter <paramref name="text"/> starts with the string <paramref name="toFind"/> 
         /// </summary>
         public static bool StartsWithAI(this string text, string toFind) =>
-            throw ShouldBeTranslatedException;
+            invariantCultureCompareInfo.IsPrefix(text, toFind, aiCompareOptions);
 
         /// <summary>
-        /// Zjistí jestli řetězec <paramref name="text"/> končí řetězecem <paramref name="toFind"/> 
+        /// Determines whether the specified string in parameter <paramref name="text"/> ends with the string <paramref name="toFind"/> 
         /// </summary>
         public static bool EndsWithAI(this string text, string toFind) =>
-            throw ShouldBeTranslatedException;
+            invariantCultureCompareInfo.IsSuffix(text, toFind, aiCompareOptions);
     }
 }
