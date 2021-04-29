@@ -4,8 +4,20 @@ using System.Linq;
 
 namespace Mata007.QueryFunctions.SqlServer
 {
+    /// <summary xml:lang="en">
+    /// Registration of additional methods into Entity Framework
+    /// </summary>
+    /// <summary xml:lang="cs">
+    /// Registrace dodatečnách metod do Entity Frameworku
+    /// </summary>
     public class RegisterQueryFunctionsToSqlServerContext
     {
+        /// <summary xml:lang="en">
+        /// Registering case and accent insensitive string search methods into Entity Framework
+        /// </summary>
+        /// <summary xml:lang="cs">
+        /// Registrace metod pro vyhladávání v řetězcích bez ohledu na velikost písmen a interpunkci do Entity Frameworku
+        /// </summary>
         public static void RegisterStringFuncs(ModelBuilder modelBuilder)
         {
             registerContainsAI(modelBuilder);

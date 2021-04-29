@@ -7,8 +7,20 @@ using System.Reflection;
 
 namespace Mata007.QueryFunctions.OData
 {
+    /// <summary xml:lang="en">
+    /// Registering other custom method to the OData query parser
+    /// </summary>
+    /// <summary xml:lang="cs">
+    /// Registrace dodatečnách vlastních metod do OData query parseru
+    /// </summary>
     public class RegisterODataFunctions
     {
+        /// <summary xml:lang="en">
+        /// Registering other custom method to the OData query parser
+        /// </summary>
+        /// <summary xml:lang="cs">
+        /// Registrace dodatečné vlastní metody do OData query parseru
+        /// </summary>        
         public static void RegisterCustomFunction(MethodInfo methodInfo, string functionName = null)
         {
             var returnType = TypeToReference(methodInfo.ReturnType);
