@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-
+    <LangVersion>latest</LangVersion>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Mata007.QueryFunctions\Mata007.QueryFunctions.csproj" />
+    <ProjectReference Include="..\Shared\Test.Shared.TestData\Test.Shared.TestData.csproj" />
   </ItemGroup>
 
 </Project>
